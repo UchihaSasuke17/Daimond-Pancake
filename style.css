@@ -1,0 +1,466 @@
+/* style.css */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', 'Segoe UI', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #0a0a2a, #1a1a3e);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* STARS */
+
+.stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle 3s infinite;
+}
+
+@keyframes twinkle {
+
+    0%,
+    100% {
+        opacity: 0.2;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+/* CONTAINER */
+
+.container {
+    width: 100%;
+    max-width: 600px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    border-radius: 30px;
+    padding: 30px;
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+    z-index: 10;
+}
+
+.container::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    border-radius: 30px;
+    background: linear-gradient(
+        45deg,
+        rgba(255,255,255,0.1),
+        rgba(255,255,255,0)
+    );
+    z-index: -1;
+}
+
+/* PAGES */
+
+.page {
+    display: none;
+    text-align: center;
+    animation: fadeIn 0.5s ease;
+    transition: all 0.4s ease;
+}
+
+.page.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* HEADINGS */
+
+h1,
+h2,
+h3 {
+    color: white;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+h2 {
+    font-size: 1.8rem;
+}
+
+h3 {
+    font-size: 1.3rem;
+}
+
+/* QUESTIONS */
+
+.question-text {
+    font-size: 1.6rem;
+    color: #FFD700;
+    margin: 20px 0;
+}
+
+/* OPTIONS */
+
+.options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+/* BUTTONS */
+
+.option-btn,
+.next-btn,
+.submit-btn {
+    background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+    border: none;
+    padding: 15px 25px;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.option-btn:hover,
+.next-btn:hover,
+.submit-btn:hover {
+    transform: scale(1.02);
+    box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+}
+
+.option-btn:active,
+.next-btn:active,
+.submit-btn:active {
+    transform: scale(0.96);
+}
+
+/* INPUT */
+
+input {
+    width: 90%;
+    padding: 15px;
+    border-radius: 50px;
+    border: none;
+    font-size: 1rem;
+    text-align: center;
+    margin: 20px 0;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+input:focus {
+    outline: none;
+    box-shadow: 0 0 15px rgba(255,255,255,0.3);
+}
+
+/* TIMERS */
+
+.timer {
+    font-size: 1.2rem;
+    color: #FFD700;
+    margin: 10px 0;
+}
+
+.kitkat-timer {
+    font-size: 2rem;
+    letter-spacing: 5px;
+    margin: 10px 0;
+}
+
+/* RIDDLE */
+
+.riddle-input {
+    width: 80%;
+    padding: 12px;
+    font-size: 1.2rem;
+    text-align: center;
+    letter-spacing: 2px;
+}
+
+/* PUZZLE */
+
+.puzzle-container {
+    width: 100%;
+    margin: 20px 0;
+}
+
+.puzzle-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+    background: #333;
+    border: 2px solid #FFD700;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.puzzle-piece {
+    aspect-ratio: 1 / 1;
+    background-size: 400% 400%;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.puzzle-piece:hover {
+    transform: scale(0.98);
+}
+
+.puzzle-piece.empty {
+    background: #2a2a2a !important;
+    cursor: pointer;
+}
+
+.puzzle-piece.empty::after {
+    content: "⬜";
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    font-size: 2rem;
+    color: #666;
+}
+
+/* GIFTS */
+
+.gift-box {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(45deg, #ff69b4, #ff1493);
+    margin: 20px auto;
+    border-radius: 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    transition: transform 0.3s;
+}
+
+.gift-box:hover {
+    transform: scale(1.1);
+}
+
+/* BALLOONS */
+
+.balloon-gift {
+    display: inline-block;
+    margin: 15px;
+    cursor: pointer;
+    transition: transform 0.3s;
+    animation: floatBalloon 3s ease-in-out infinite;
+}
+
+.balloon-gift:hover {
+    transform: translateY(-10px);
+}
+
+.balloon {
+    font-size: 3rem;
+}
+
+@keyframes floatBalloon {
+
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+/* CAKE */
+
+.cake-animation {
+    position: relative;
+    height: 250px;
+    margin: 30px 0;
+}
+
+.falling-cake {
+    position: absolute;
+    font-size: 3rem;
+    animation: fall 1.5s ease-in forwards;
+    left: 50%;
+    transform: translateX(-50%);
+    filter: drop-shadow(0 0 10px rgba(255,215,0,0.5));
+}
+
+@keyframes fall {
+
+    0% {
+        top: -100px;
+        opacity: 0;
+        transform: translateX(-50%) rotate(0deg);
+    }
+
+    100% {
+        top: 180px;
+        opacity: 1;
+        transform: translateX(-50%) rotate(360deg);
+    }
+}
+
+/* PETALS */
+
+.rose-petal {
+    position: absolute;
+    font-size: 1.5rem;
+    pointer-events: none;
+    animation: burst 1s ease-out forwards;
+}
+
+@keyframes burst {
+
+    0% {
+        transform: scale(0) translate(0,0);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1.5)
+            translate(var(--x), var(--y));
+
+        opacity: 0;
+    }
+}
+
+/* MAILBOX */
+
+.mailbox {
+    font-size: 5rem;
+    cursor: pointer;
+    transition: transform 0.3s;
+    margin: 20px 0;
+}
+
+.mailbox:hover {
+    transform: scale(1.1);
+}
+
+/* LETTER */
+
+.letter {
+    font-size: 2rem;
+    animation: flyOut 1s ease forwards;
+    display: inline-block;
+}
+
+@keyframes flyOut {
+
+    0% {
+        transform: translate(0,0) scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(100px,-100px) scale(1.5);
+        opacity: 0;
+    }
+}
+
+/* HIDDEN */
+
+.hidden {
+    display: none;
+}
+
+/* MUSIC BUTTON */
+
+.music-control {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(0,0,0,0.5);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.5rem;
+    z-index: 100;
+}
+
+/* PUZZLE COMPLETE */
+
+.puzzle-complete {
+    text-align: center;
+    margin-top: 20px;
+    color: #FFD700;
+    font-size: 1.3rem;
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    .container {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.4rem;
+    }
+
+    .question-text {
+        font-size: 1.3rem;
+    }
+
+    .gift-box {
+        width: 80px;
+        height: 80px;
+        font-size: 1.6rem;
+    }
+
+    .balloon {
+        font-size: 2.3rem;
+    }
+
+    .mailbox {
+        font-size: 4rem;
+    }
+  }
